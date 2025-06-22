@@ -41,7 +41,8 @@
         "EnableChex": "Add/Remove Chex to current Scene",
         "RealmSelector": "Realm Selector",
         "Settings": "Settings",
-        "TerrainSelector": "Terrain Palette"
+        "TerrainSelector": "Terrain Palette",
+        "EmptyChex": "Chex Do Nothing (compatibility)"
       },
       "CUSTOMIZER": {
         "Title": "Chex Customizer",

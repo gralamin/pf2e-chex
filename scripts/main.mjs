@@ -121,5 +121,5 @@ Hooks.once("setup", function() {
 Hooks.on("canvasReady", () => chex.manager._onReady());
 Hooks.on("canvasTearDown", () => chex.manager._onTearDown());
 Hooks.on("canvasInit", () => chex.manager._onInit());
-Hooks.on("getSceneControlButtons", buttons => chex.manager._extendSceneControlButtons(buttons));
+Hooks.on("getSceneControlButtons", buttons => chex.manager._renderSceneControls(buttons));
 Hooks.on("updateScene", (document, change) => chex.manager._updateScene(document, change));
