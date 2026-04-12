@@ -193,7 +193,7 @@ export default class ChexDrawingLayer extends PIXI.Container {
         }
         break;
       case "realm":
-        for (const hex of chex.manager.hexes) {
+        for (const hex of chex.manager.hexes.filter(h => h.hexData.claimed)) { //Filtering here prevents unclaimed hexes from getting the fallback color
           const rid = hex.hexData.claimed;
           if (!groups[`realm-${rid}`]) groups[`realm-${rid}`] = [];
           groups[`realm-${rid}`].push(hex);
