@@ -74,7 +74,7 @@ export default class ChexManager {
                 icon: "fa-solid fa-hexagon-image",
                 toggle: true,
                 active: this.hud.enabled ?? false,
-                onClick: () => {this.hud.toggle()}
+                onChange: () => {this.hud.toggle()}
             };
 
             this.#showKingdomTool = {
@@ -83,7 +83,7 @@ export default class ChexManager {
                 icon: "fa-solid fa-bank",
                 toggle: false,
                 active: this.mode === C.MODE_REALM,
-                onClick: () => {
+                onChange: () => {
                     this.mode = C.MODE_REALM;
                     this.#showKingdomTool.active = true;
                     this.#showTerrainTool.active = false;
@@ -98,7 +98,7 @@ export default class ChexManager {
                 icon: "fa-solid fa-mountain",
                 toggle: false,
                 active: this.mode === C.MODE_TERRAIN,
-                onClick: () => {
+                onChange: () => {
                     this.mode = C.MODE_TERRAIN; 
                     this.#showTerrainTool.active = true;
                     this.#showKingdomTool.active = false;
@@ -113,7 +113,7 @@ export default class ChexManager {
                 icon: "fa-solid fa-road",
                 toggle: false,
                 active: this.mode === C.MODE_TRAVEL,
-                onClick: () => {
+                onChange: () => {
                     this.mode = C.MODE_TRAVEL;
                     this.#showTravelTool.active = true;
                     this.#showKingdomTool.active = false;
@@ -141,7 +141,7 @@ export default class ChexManager {
                 tools: {
 // This button exists because Foundry VTT v13 has a mandatory "activeTool" parameter which will immediately activate the button when switching to these tools.
 // Enabling/Disabling Chex, launching the settings, or launching one of the edit tools would be awkward, so instead there's just this dead button.
-// Sadly, it logs an error if it's not visible.
+// Sadly, it logs an error if it's not visible in v13, but this was addressed in v14. Leaving in place with the hopes of maintaining v13+v14 compatibility.
                     chexDummy: {
                         name: "chexDummy",
                         title: "CHEX.TOOLS.Dummy",
@@ -284,7 +284,7 @@ export default class ChexManager {
             this.kingdomLayer = new ChexDrawingLayer();
             
             if (canvas.scene.tokenVision)
-                canvas.stage.rendered.environment.effects.addChildAt(chex.manager.kingdomLayer, 1);
+                canvas.rendered.environment.effects.addChildAt(chex.manager.kingdomLayer, 1);
             else 
                 canvas.interface.grid.addChild(this.kingdomLayer);
         }
